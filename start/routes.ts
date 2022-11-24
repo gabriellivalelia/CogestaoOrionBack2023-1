@@ -5,13 +5,13 @@ Route.get('/', async () => {
 })
 
 //Usuarios
-Route.get('/usuarios', 'UsuariosController.index')
-Route.post('/usuarios', 'UsuariosController.store')
-Route.put('/usuarios/:id', 'UsuariosController.update')
-Route.delete('/usuarios/:id', 'UsuariosController.destroy')
+Route.get('/Usuario', 'UsuariosController.index')
+Route.post('/Usuario', 'UsuariosController.store')
+Route.put('/Usuario/:id', 'UsuariosController.update')
+Route.delete('/Usuario/:id', 'UsuariosController.destroy')
 
 //Lembrete
-Route.get('/Lembrete', 'LembreteController.index')
-Route.post('/Lembrete', 'LembreteController.store')
-Route.put('/Lembrete/:id', 'LembreteController.update')
-Route.delete('/Lembrete/:id', 'LembreteController.destroy')
+Route.get('/Lembrete', 'LembretesController.index')
+Route.post('/Lembrete', 'LembretesController.store')
+Route.put('/Lembrete/:id', 'LembretesController.update')
+Route.delete('/Lembrete/:id', 'LembretesController.destroy')
