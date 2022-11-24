@@ -23,3 +23,13 @@ import Route from '@ioc:Adonis/Core/Route'
 Route.get('/', async () => {
   return { hello: 'world' }
 })
+
+Route.get('/usuarios', 'UsuariosController.index')
+Route.post('/usuarios', 'UsuariosController.store')
+Route.delete('/usuarios/:id_usuario', 'UsuariosController.destroy')
+
+Route.get('/lembretes', 'LembretesController.index')
+Route.post('/lembretes', 'LembretesController.store')
+Route.put('/lembretes', 'LembretesController.update')
+Route.delete('/lembretes/:id_lembrete', 'LembretesController.destroy')
+

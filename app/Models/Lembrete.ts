@@ -4,11 +4,11 @@ import { v4 as uuid } from "uuid";
 import Usuario from './Usuario';
 export default class Lembrete extends BaseModel {
   @column({ isPrimary: true })
-  public id: string
+  public id_lembrete: string
 
   @beforeCreate()
-  public static async createUUID (model: Usuario){
-    model.id = uuid()
+  public static async createUUID (model: Lembrete){
+    model.id_lembrete = uuid()
   }
   @column()
   public id_usuario: string

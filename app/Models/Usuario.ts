@@ -5,11 +5,11 @@ import Lembrete from './Lembrete';
 
 export default class Usuario extends BaseModel {
   @column({ isPrimary: true })
-  public id: string
+  public id_usuario: string
    
   @beforeCreate()
   public static async createUUID (model: Usuario){
-    model.id = uuid()
+    model.id_usuario = uuid()
   }
   @column()
   public nome: string
