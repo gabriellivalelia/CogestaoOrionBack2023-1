@@ -18,4 +18,24 @@ export default class UsuariosController {
 
     return user;
   }
+
+  public async update({ params, request }) {
+
+    const user = await Usuario.findOrFail(params.id_usuario)
+    const data = request.only(['nome', 'email'])
+
+    user.merge(data)
+    await user.save()
+
+    return user
+  }
+
+  public async destroy({ request }: HttpContextContract) {
+    const id = request.param('id_usuario')
+    if (!id) return
+		const user = await Usuario.findOrFail(id)
+    await user.delete()
+
+    return user
+  }
 }
