@@ -1,5 +1,6 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Lembrete from 'App/Models/Lembrete'
+import { LembreteValidatorStore, LembreteValidatorUpdate } from 'App/Validators/LembreteValidator'
 export default class LembretesController {
     public async index() {
         const lembrete = await Lembrete.all()
@@ -8,8 +9,9 @@ export default class LembretesController {
     }
 
 public async store({ request }: HttpContextContract) {
-    const titulo = request.input('titulo')
-    const descricao = request.input('descricao')
+    const validateData = await request.validate(LembreteValidatorStore)
+    
+    const {titulo,descricao} = validateData
 
     const lembrete = await Lembrete.create({
         titulo,
@@ -18,13 +20,15 @@ public async store({ request }: HttpContextContract) {
     
     return lembrete
 }
-public async update({params, request}) {
+public async update({ request }: HttpContextContract) {
 
-    const lembrete = await Lembrete.findOrFail(params.id)
-    const data = request.only(['titulo','descricao'])
-
-    lembrete.merge(data)
+    const id_lembrete = request.param('id_lembrete')
+    if (!id_lembrete) return
+    const validateData = await request.validate(LembreteValidatorUpdate)
+    const lembrete = await Lembrete.findOrFail(id_lembrete)
+    lembrete.merge(validateData)
     await lembrete.save()
+    
 
     return lembrete
     
