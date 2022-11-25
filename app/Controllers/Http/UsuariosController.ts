@@ -37,7 +37,7 @@ export default class UsuariosController {
   }
 
   public async destroy({ request }: HttpContextContract) {
-    const id = request.param('id_usuario')
+    const id = request.param('id')
     if (!id) return
 		const user = await Usuario.findOrFail(id)
     await user.delete()

@@ -30,7 +30,7 @@ export default class LembretesController {
         if (!id) return
         const validateData = await request.validate(LembreteValidatorUpdate)
     
-        const lembrete = await Lembrete.findOrFail(params.id_Lembrete)
+        const lembrete = await Lembrete.findOrFail(params.id_lembrete)
     
         lembrete.merge(limpaCamposNulosDeObjeto(validateData))
         await lembrete.save()
@@ -39,7 +39,7 @@ export default class LembretesController {
       }
     
       public async destroy({ request }: HttpContextContract) {
-        const id = request.param('id_Lembrete')
+        const id = request.param('id')
         if (!id) return
             const lembrete = await Lembrete.findOrFail(id)
         await lembrete.delete()
