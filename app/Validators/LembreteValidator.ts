@@ -7,6 +7,7 @@ export class LembreteValidatorStore {
   public schema = schema.create({
     titulo: schema.string({ trim:true }),
     descricao: schema.string({ trim:true }),
+    id_usuario: schema.string({ trim:true }),
   })
 
   public messages = {

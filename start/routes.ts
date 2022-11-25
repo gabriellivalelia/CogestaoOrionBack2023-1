@@ -11,6 +11,7 @@ Route.delete('/usuarios/:id_usuario', 'UsuariosController.destroy')
 
 //Lembretes
 Route.get('/lembretes', 'LembretesController.index')
+Route.get('/lembretes/:id_usuario', 'LembretesController.indexGetElementById')
 Route.post('/lembretes', 'LembretesController.store')
 Route.put('/lembretes/:id_lembrete', 'LembretesController.update')
 Route.delete('/lembretes/:id_lembrete', 'LembretesController.destroy')

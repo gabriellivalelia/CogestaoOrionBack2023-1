@@ -19,6 +19,9 @@ export default class Lembrete extends BaseModel {
   @column()
   public descricao: string
 
+  @column()
+  public id_usuario: string
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 
@@ -26,7 +29,7 @@ export default class Lembrete extends BaseModel {
   public updatedAt: DateTime
 
   @belongsTo(() => Usuario, {
-    foreignKey: 'id_usuario'
+    localKey: 'id_usuario'
   })
   public usuario: BelongsTo<typeof Usuario>
 }

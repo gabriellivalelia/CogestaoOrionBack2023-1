@@ -18,12 +18,21 @@ export default class LembretesController {
         // const titulo = request.input('titulo')
         // const descricao = request.input('descricao')
 
-        const { titulo, descricao } = validateData
+        const { titulo, descricao, id_usuario } = validateData
     
         const lembrete = await Lembrete.create({
             titulo,
             descricao,
+            id_usuario
         })
+
+        return lembrete
+    }
+
+    public async indexGetElementById({ request }: HttpContextContract) {
+
+        const id_usuario = request.param('id_usuario')
+        const lembrete = await Lembrete.findBy('id_usuario', id_usuario)
 
         return lembrete
     }
