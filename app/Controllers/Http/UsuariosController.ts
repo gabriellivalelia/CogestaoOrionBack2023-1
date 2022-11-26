@@ -27,7 +27,7 @@ export default class UsuariosController {
     const id = request.param('id')
     if (!id) return
     const validateData = await request.validate(UsuarioValidatorUpdate)
-    const user = await Usuario.findOrFail(params.id)
+    const user = await Usuario.findOrFail(id)
 
     user.merge(limpaCamposNulosDeObjeto(validateData))
 

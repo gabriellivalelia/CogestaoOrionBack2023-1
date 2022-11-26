@@ -20,7 +20,7 @@ export class UsuarioValidatorUpdate {
   constructor(protected ctx: HttpContextContract) {}
 
   public schema = schema.create({
-    name: schema.string.optional({ trim: true }),
+    nome: schema.string.optional({ trim: true }),
     email: schema.string.optional({ trim: true }, [rules.email()]),
   })
 
