@@ -5,12 +5,15 @@ import Usuario from './Usuario'
 
 export default class Lembrete extends BaseModel {
   @column({ isPrimary: true })
-  public id: string
+  public id_lembrete: string
 
   @beforeCreate()
   public static async createUUID (model:Lembrete){
-    model.id = uuid()
+    model.id_lembrete = uuid()
   }
+
+  @column()
+  public id_usuario: string
 
   @column()
   public titulo: string
